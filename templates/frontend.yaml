@@ -51,11 +51,8 @@ spec:
           limits:
             memory: 50M
             cpu: 100m
-          requests:
-            memory: 50M
-            cpu: 100m
       - name: dashboard
-        image: oisp/frontend
+        image: oisp/frontend:{{ .Values.tag }}
         ports:
         - containerPort: 4001
         args:
@@ -149,9 +146,8 @@ spec:
             port: 4001
         resources:
           limits:
-            cpu: "1"
-          requests:
-            cpu: "1"
+            cpu: 0.1
+            memory: 100M
       imagePullSecrets:
         - name: dockercred
       volumes:

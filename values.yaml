@@ -18,4 +18,6 @@ imap:
 numberReplicas:
     frontend: 1
     backend: 1
-    debugger: 0
+    debugger: 1
+
+tag: v1.0.5-beta2

@@ -36,14 +36,11 @@ spec:
     spec:
       containers:
       - name: hbase-region
-        image: oisp/hbase
+        image: oisp/hbase:{{ .Values.tag }}
         resources:
           limits:
-            memory: 1G
-            cpu: 500m
-          requests:
-            memory: 1G
-            cpu: 500m
+            memory: 200M
+            cpu: 100m
         env:
         - name: REGIONSERVERS
           value: hbase-region

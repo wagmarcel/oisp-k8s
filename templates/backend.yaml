@@ -34,7 +34,7 @@ spec:
     spec:
       containers:
       - name: backend
-        image: oisp/backend:latest
+        image: oisp/backend:{{ .Values.tag }}
         ports:
         - containerPort: 8080
         args:
@@ -86,8 +86,6 @@ spec:
           tcpSocket:
             port: 8080
         resources:
-          requests:
-            cpu: "1"
       - name: jaeger-agent
         image: jaegertracing/jaeger-agent:1.6.0
         ports:
@@ -107,7 +105,5 @@ spec:
             memory: 50M
             cpu: 100m
           requests:
-            memory: 50M
-            cpu: 100m
       imagePullSecrets:
       - name: dockercred

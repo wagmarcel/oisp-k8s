@@ -35,7 +35,7 @@ spec:
     spec:
       containers:
       - name: websocket-server
-        image: oisp/websocket-server:latest
+        image: oisp/websocket-server:{{ .Values.tag }}
         ports:
         - containerPort: 5000
           protocol: TCP

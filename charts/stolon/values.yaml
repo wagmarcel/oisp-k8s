@@ -146,7 +146,7 @@ persistence:
   accessMode: ReadWriteOnce
 
   ## Persistant Volume Storage Class Name
-  storageClassName: oneandone
+  storageClassName:  microk8s-hostpath
 
   ## Persistent Volume Storage Size.
   ##

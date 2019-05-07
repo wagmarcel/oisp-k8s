@@ -49,11 +49,8 @@ spec:
         args: ["start-hadoop", "namenode"]
         resources:
           limits:
-            memory: 1G
-            cpu: 500m
-          requests:
-            memory: 1G
-            cpu: 500m
+            memory: 200M
+            cpu: 100m
         env:
           - name: HDFS_USER
             value: root
