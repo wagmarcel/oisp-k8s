@@ -5,10 +5,13 @@ metadata:
     app: hbase-region
   name: hbase-region
 spec:
-  clusterIP: None
   ports:
-  - name: "8020"
-    port: 8020
+  - name: "60010"
+    port: 60010
+  - name: "60020"
+    port: 60020
+  - name: "ssh"
+    port: 22
   selector:
     app: hbase-region
 ---
@@ -42,17 +45,16 @@ spec:
             memory: 200M
             cpu: 100m
         env:
-        - name: REGIONSERVERS
-          value: hbase-region
+        - name: HBASE_MASTER
+          value: hbase-master
         - name: ZOOKEEPER
           value: zookeeper:2181
         - name: HDFS_NAMENODE
           value: hdfs-namenode
         command: ["/bin/bash", "/opt/entrypoint-region.sh"]
         ports:
-        - containerPort: 2181
-        - containerPort: 9090
-        - containerPort: 60000
+        - containerPort: 60010
         - containerPort: 60020
+        - containerPort: 22
       imagePullSecrets:
       - name: dockercred

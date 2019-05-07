@@ -5,7 +5,6 @@ metadata:
     app: hbase-master
   name: hbase-master
 spec:
-  clusterIP: None
   ports:
   - name: "8080"
     port: 8080
@@ -17,10 +16,6 @@ spec:
     port: 16010
   - name: "60000"
     port: 60000
-  - name: "webui"
-    port: 60010
-  - name: "2181"
-    port: 2181
   selector:
     app: hbase-master
 ---
@@ -57,11 +52,11 @@ spec:
           value: hdfs-namenode
         command: ["/bin/bash", "/opt/wait-for-it.sh", "hdfs-namenode:8020", "-t", "300", "--", "bash", "/opt/wait-for-it.sh", "zookeeper:2181", "-t", "300", "--", "/opt/entrypoint.sh"]
         ports:
-        - containerPort: 2181
         - containerPort: 9090
+        - containerPort: 8080
         - containerPort: 60000
-        - containerPort: 60010
-        - containerPort: 60020
+        - containerPort: 16010
+        - containerPort: 9095
         volumeMounts:
         - mountPath: /data
           name: hbase-data
@@ -85,4 +80,4 @@ spec:
   - ReadWriteOnce
   resources:
     requests:
-      storage: 10Gi
+      storage: 1Gi
