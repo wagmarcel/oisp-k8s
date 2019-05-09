@@ -20,4 +20,4 @@ numberReplicas:
     backend: 1
     debugger: 1
 
-tag: v1.0.5-beta2
+tag: latest

@@ -79,7 +79,7 @@ sentinel:
   tolerations: []
 
 proxy:
-  replicas: 3
+  replicas: 1
   ## Set serviceType to nodePort if needed
   ## proxy is used to route RW requests to the master
   # serviceType: NodePort
@@ -91,7 +91,7 @@ proxy:
   resources:
     requests:
       cpu: "100m"
-      memory: "512Mi"
+      memory: "200Mi"
 
   ## Configure nodeSelector, tolerations and affinity.
   ## ref: https://kubernetes.io/docs/concepts/configuration/assign-pod-node
